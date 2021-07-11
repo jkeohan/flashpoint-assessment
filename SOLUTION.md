@@ -61,7 +61,13 @@ In order to refactor the component to accept a url the following actions were ta
 
 - pass additional options when initializing the component
 - update onQueryChange function to display the results based on data vs github
--
+- added the following methods:
+	- **getResultsAPI**
+	- **makeAPICall** 
+    - **getResultsAPI** 
+	- **addKeyPressEventListener**
+    - **createUserSelectionEl**
+    - **removeUserSelectionEl**  
 
 #### Pass additional options when initializing the component
 
@@ -126,14 +132,14 @@ el.addEventListener('click', (event) => {
 });
 ```
 
-#### getResultsAPI
+### getResultsAPI
 
 The following functions were added to make the API call:
 
 - **makeAPICall** 
 - **getResultsAPI** 
 
-##### **makeAPICall** 
+#### **makeAPICall** 
 
 The **makeAPICall** function was added to make the API call.  This function was called by **getResultsAPI**
 
@@ -165,7 +171,7 @@ results = results.items.map((item) => ({
 }));
 ```
 
-##### **getResultsAPI**
+#### **getResultsAPI**
 
 The **getResultsAPI** was created to emulate the functionality of **getResults** and it calls **makeAPICall**.  
 
