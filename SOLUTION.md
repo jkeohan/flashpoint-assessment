@@ -215,8 +215,7 @@ addKeyPressEventListener() {
 		let currentLi;
 		let nextLi;
 		let index = -1;
-		document
-			.querySelector(`.${this.options.className}`)
+		document.querySelector(`.${this.options.className}`)
 			.addEventListener('keydown', (event) => {
 				let lis = document.querySelectorAll(`.${this.options.className} .result`);
 				let len = lis.length - 1;
