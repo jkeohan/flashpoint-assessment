@@ -207,7 +207,7 @@ In order to keep the events targeted for their respective component the querySel
 document.querySelector(`.${this.options.className}`)
 ```
 
-The function is a bit long and 
+The function is a bit long and I'd like to refactor to include a switch statement, actions and a dispatch function, similar to redux or useReducer. 
 
 
 ```js
