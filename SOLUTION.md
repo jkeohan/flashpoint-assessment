@@ -11,8 +11,12 @@ Initially I encountered the following errors during development:
 
 **ISSUE**: Initial issues with running yarn install...for some reason it didn't work so I opted for npm install...that also didn't work <br>
 **ERROR**: related to fsevents module...
+
+```bash
 warning Error running install script for optional dependency: "/Users/joekeohan/Desktop/seir/assessments/swe-ui-code-test-master/node_modules/fsevents: Command failed.
 Exit code: 1v <br>
+```
+
 **RESOLUTION**: Downgraded node on my machine from 15.5.1 to v13.1.0 using:
 
 ```
@@ -41,7 +45,7 @@ npm WARN deprecated fsevents@1.2.13:
     bundle: './index.js'
   },
 
-```
+```git push -u origin main
 
 ```js
 // updated config
