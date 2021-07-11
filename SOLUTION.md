@@ -207,71 +207,74 @@ In order to keep the events targeted for their respective component the querySel
 document.querySelector(`.${this.options.className}`)
 ```
 
+The function is a bit long and 
+
+
 ```js
 addKeyPressEventListener() {
-	let liSelected;
-	let next;
-	let index = -1;
-	document
-		.querySelector(`.${this.options.className}`)
-		.addEventListener('keydown', (event) => {
-			let lis = document.querySelectorAll(`.${this.options.className} .result`);
-			let len = lis.length - 1;
-			// keypress down arrow
-			if (event.key === 'ArrowDown') {
-				index += 1;
-				//down
-				// if an element has already been selected
-				if (liSelected) {
-					liSelected.classList.remove('selected');
-					next = lis[index];
-					console.log('next', next);
-					if (next !== undefined && index <= len) {
-						liSelected = next;
+		let currentLi;
+		let nextLi;
+		let index = -1;
+		document
+			.querySelector(`.${this.options.className}`)
+			.addEventListener('keydown', (event) => {
+				let lis = document.querySelectorAll(`.${this.options.className} .result`);
+				let len = lis.length - 1;
+				// keypress down arrow
+				if (event.key === 'ArrowDown') {
+					index += 1;
+					//down
+					// if an element has already been selected
+					if (currentLi) {
+						currentLi.classList.remove('selected');
+						nextLi = lis[index];
+						console.log('nextLi', nextLi);
+						if (nextLi !== undefined && index <= len) {
+							currentLi = nextLi;
+						} else {
+							index = 0;
+							currentLi = lis[0];
+						}
+						currentLi.classList.add('selected');
+						console.log(index);
+						// if no li has been selected
+					} else {
+						// start with the first li in the list
+						index = 0;
+						currentLi = lis[0];
+						currentLi.classList.add('selected');
+					}
+				// keypress up arrow
+				} else if (event.key === 'ArrowUp') {
+					if (currentLi) {
+						currentLi.classList.remove('selected');
+						index -= 1;
+						nextLi = lis[index]
+						console.log(index,nextLi)
+						if (nextLi !== undefined && index >= 0) {
+							currentLi = nextLi;
+						} else {
+							index = len;
+							currentLi = lis[len]
+						}
+						currentLi.classList.add('selected');
 					} else {
 						index = 0;
-						liSelected = lis[0];
+						currentLi = lis[len]
+						currentLi.classList.add('selected');
 					}
-					liSelected.classList.add('selected');
-					console.log(index);
-					// if no li has been selected
-				} else {
-					// start with the first li in the list
-					index = 0;
-					liSelected = lis[0];
-					liSelected.classList.add('selected');
-				}
-			// keypress up arrow
-			} else if (event.key === 'ArrowUp') {
-				if (liSelected) {
-					liSelected.classList.remove('selected');
-					index -= 1;
-					next = lis[index]
-					console.log(index,next)
-					if (next !== undefined && index >= 0) {
-						liSelected = next;
-					} else {
-						index = len;
-						liSelected = lis[len]
-					}
-					liSelected.classList.add('selected');
-				} else {
-					index = 0;
-					liSelected = lis[len]
-					liSelected.classList.add('selected');
-				}
-			} else if (event.key === 'Enter') {
-				let item = lis[index];
+				} else if (event.key === 'Enter') {
+					let item = lis[index];
 
-				let itemVal = item.innerHTML
-				console.log('itemVal', itemVal);
-				let input = document.querySelector(
-					`.${this.options.className} input`
-				)
-				input.value = itemVal
-				this.createUserSelectionEl({ text: item.innerText });
-			}
-		});
+					let itemVal = item.innerHTML
+					console.log('itemVal', itemVal);
+					let input = document.querySelector(
+						`.${this.options.className} input`
+					)
+					input.value = itemVal
+					this.createUserSelectionEl({ text: item.innerText });
+				}
+			});
 	}
 ```
 

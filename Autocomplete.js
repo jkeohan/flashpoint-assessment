@@ -132,8 +132,8 @@ class Autocomplete {
 	}
 
 	addKeyPressEventListener() {
-		let liSelected;
-		let next;
+		let currentLi;
+		let nextLi;
 		let index = -1;
 		document
 			.querySelector(`.${this.options.className}`)
@@ -145,43 +145,43 @@ class Autocomplete {
 					index += 1;
 					//down
 					// if an element has already been selected
-					if (liSelected) {
-						liSelected.classList.remove('selected');
-						next = lis[index];
-						console.log('next', next);
-						if (next !== undefined && index <= len) {
-							liSelected = next;
+					if (currentLi) {
+						currentLi.classList.remove('selected');
+						nextLi = lis[index];
+						console.log('nextLi', nextLi);
+						if (nextLi !== undefined && index <= len) {
+							currentLi = nextLi;
 						} else {
 							index = 0;
-							liSelected = lis[0];
+							currentLi = lis[0];
 						}
-						liSelected.classList.add('selected');
+						currentLi.classList.add('selected');
 						console.log(index);
 						// if no li has been selected
 					} else {
 						// start with the first li in the list
 						index = 0;
-						liSelected = lis[0];
-						liSelected.classList.add('selected');
+						currentLi = lis[0];
+						currentLi.classList.add('selected');
 					}
 				// keypress up arrow
 				} else if (event.key === 'ArrowUp') {
-					if (liSelected) {
-						liSelected.classList.remove('selected');
+					if (currentLi) {
+						currentLi.classList.remove('selected');
 						index -= 1;
-						next = lis[index]
-						console.log(index,next)
-						if (next !== undefined && index >= 0) {
-							liSelected = next;
+						nextLi = lis[index]
+						console.log(index,nextLi)
+						if (nextLi !== undefined && index >= 0) {
+							currentLi = nextLi;
 						} else {
 							index = len;
-							liSelected = lis[len]
+							currentLi = lis[len]
 						}
-						liSelected.classList.add('selected');
+						currentLi.classList.add('selected');
 					} else {
 						index = 0;
-						liSelected = lis[len]
-						liSelected.classList.add('selected');
+						currentLi = lis[len]
+						currentLi.classList.add('selected');
 					}
 				} else if (event.key === 'Enter') {
 					let item = lis[index];
