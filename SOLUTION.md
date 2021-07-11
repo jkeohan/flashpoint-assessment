@@ -44,8 +44,7 @@ npm WARN deprecated fsevents@1.2.13:
   entry: {
     bundle: './index.js'
   },
-
-```git push -u origin main
+```
 
 ```js
 // updated config
