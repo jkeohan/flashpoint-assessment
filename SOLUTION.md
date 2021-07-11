@@ -9,7 +9,7 @@ Initially I encountered the following errors during development:
 - version of node (15.5.1) not compatible with fsevents@1.2.13:
 - async/await not supported in webpack
 
-**ISSUE**: Initial issues with running yarn install...for some reason it didn't work so I opted for npm install...that also didn't work <br>
+**ISSUE**: Initial issues with running yarn install...for some reason it didn't work so I opted for npm install...that also didn't work 
 **ERROR**: related to fsevents module...
 
 ```bash
