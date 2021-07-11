@@ -185,10 +185,9 @@ async getResultsAPI(query, url) {
 }
 ```
 
-Both functions were configured to use **async/await** and required that the **webpack.config.js** file be updated (included in solution section
+Both functions were configured to use **async/await** and required that the **webpack.co
+nfig.js** file be updated (included in solution section)
 
-The function was also configured to standardize the results to align with how the component was already configured to render the li's. 
-)
 
 
 #### Task #3: When an item in the dropdown is selected by mouse click or by hitting the Enter key, show the selected item below the search input(s).
