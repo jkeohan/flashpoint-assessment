@@ -25,7 +25,7 @@ nvm use v13.1.0
 
 I chose v13 as it was the next previous version installed on my mac.
 
-The install worked and then I saw the following message which might explain why it didn't work on v15
+The install worked and then I saw the following message explains why it didn't work on v15
 
 ```
 npm WARN deprecated fsevents@1.2.13:
