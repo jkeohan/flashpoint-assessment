@@ -173,7 +173,7 @@ results = results.items.map((item) => ({
 
 #### **getResultsAPI**
 
-The **getResultsAPI** was created to emulate the functionality of **getResults** and it calls **makeAPICall**.  
+The **getResultsAPI** was created to emulate the functionality of **getResults** in that it would return the result of calling **makeAPICall**.  
 
 ```js
 async getResultsAPI(query, url) {
