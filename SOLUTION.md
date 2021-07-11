@@ -36,7 +36,15 @@ npm WARN deprecated fsevents@1.2.13:
 <hr>
 
 **ISSUE**: webpack not configured to support async/await<br>
-**ERROR**: The error was as follows:<br>
+**ERROR**: The error was as follows:
+
+```js
+Uncaught ReferenceError: regeneratorRuntime is not defined
+    at Autocomplete.js:60
+```
+
+The above line is where async was referenced
+
 **RESOLUTION**: added the following polyfill to **webpack.config.js**
 
 ```js
