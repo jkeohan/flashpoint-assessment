@@ -199,7 +199,7 @@ Enabling this functionality required the following methods:
 - **createUserSelectionEl**
 - **removeUserSelectionEl**
 
-##### **addKeyPressEventListener**
+#### **addKeyPressEventListener**
 
 This method adds and listens for **ArrowDown**, **ArrowUp** and **Enter** events.  
 
@@ -277,7 +277,7 @@ addKeyPressEventListener() {
 	}
 ```
 
-##### 	createUserSelectionEl
+#### 	createUserSelectionEl
 
 This method handles the creation of a new div below the ul that displays the user selected choice. 
 
@@ -298,7 +298,7 @@ createUserSelectionEl(item) {
 }
 ```
 
-##### 	removeUserSelectionEl
+####	removeUserSelectionEl
 
 This method handles the removal any previous div of the user selected choice.
 
