@@ -189,7 +189,7 @@ Both functions were configured to use **async/await** and required that the **we
 
 
 
-#### Task #3: When an item in the dropdown is selected by mouse click or by hitting the Enter key, show the selected item below the search input(s).
+### Task #3: When an item in the dropdown is selected by mouse click or by hitting the Enter key, show the selected item below the search input(s).
 
 Enabling this functionality required the following methods:
 
