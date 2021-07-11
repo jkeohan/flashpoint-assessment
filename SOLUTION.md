@@ -36,7 +36,7 @@ npm WARN deprecated fsevents@1.2.13:
 <hr>
 
 **ISSUE**: webpack not configured to support async/await<br>
-**ERROR**: The error was as follows:
+**ERROR**: The error was as follows:<br>
 **RESOLUTION**: added the following polyfill to **webpack.config.js**
 
 ```js
