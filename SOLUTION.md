@@ -185,8 +185,7 @@ async getResultsAPI(query, url) {
 }
 ```
 
-Both functions were configured to use **async/await** and required that the **webpack.co
-nfig.js** file be updated (included in solution section)
+Both functions were configured to use **async/await** and required that the **webpack.config.js** file be updated (included in solution section)
 
 
 
