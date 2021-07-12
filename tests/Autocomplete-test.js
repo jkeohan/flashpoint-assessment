@@ -35,22 +35,22 @@ describe('Autocomplete', () => {
     })
   });
 
-  // describe('Github Profiles', () => {
-  //   before(() => {
-  //     document.body.innerHTML = html;
-  //     wrapper = new Autocomplete(document.getElementById('state'));
-  //   });
+  describe('Github Profiles', () => {
+    before(() => {
+      document.body.innerHTML = html;
+      wrapper = new Autocomplete(document.getElementById('state'));
+    });
 
-  //   it('should fetch github user(s) on text input', () => {
-  //     expect(false).toBeTruthy();
-  //   });
+    it('should fetch github user(s) on text input', () => {
+      expect(false).toBeTruthy();
+    });
 
-  //   it('should handle no results found', () => {
-  //     expect(false).toBeTruthy();
-  //   });
+    it('should handle no results found', () => {
+      expect(false).toBeTruthy();
+    });
 
-  //   it('should display user profile', () => {
-  //     expect(false).toBeTruthy();
-  //   })
-  // })
+    it('should display user profile', () => {
+      expect(false).toBeTruthy();
+    })
+  })
 });
