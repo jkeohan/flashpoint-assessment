@@ -23,11 +23,7 @@ describe('Autocomplete', () => {
     });
 
     it('should handle keyboard input', () => {
-      const input = document.querySelector('#state input');
-      input.value = "new york"
-      document.body.dispatchEvent(new Event('keydown', {'key': 'ArrowDown'}));
-      const lis = document.querySelector('#state li');
-      expect(lis[0].className).toEqual('selected');
+      expect(false).toBeTruthy();
     });
 
     it('should populate input on value selection', () => {
@@ -38,7 +34,7 @@ describe('Autocomplete', () => {
   describe('Github Profiles', () => {
     before(() => {
       document.body.innerHTML = html;
-      wrapper = new Autocomplete(document.getElementById('state'));
+      wrapper = new Autocomplete(document.getElementById('gh-user'));
     });
 
     it('should fetch github user(s) on text input', () => {

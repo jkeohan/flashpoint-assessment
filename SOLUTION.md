@@ -335,3 +335,7 @@ removeUserSelectionEl() {
 	}
 }
 ```
+
+### Testing 
+
+I didn't have the chance to work through the testing.  I've been working only with Cypress testing for React and need to brush up creating/running tests outside of Cypress. 
