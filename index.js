@@ -24,6 +24,7 @@ https: new Autocomplete(document.getElementById('state'), {
 
 
 // Github Users
+
 new Autocomplete(document.getElementById('gh-user'), {
   githubAPI,
   className: 'gh-users-group',

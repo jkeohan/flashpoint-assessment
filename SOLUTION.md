@@ -61,6 +61,17 @@ entry: {
 },
 ```
 
+<hr>
+
+**ISSUE**: changing the github name too quickly in sequence would disable the API temporarily<br>
+**ERROR**: The error was as follows: 
+<img src="https://i.imgur.com/4eCvKP1.png"><br>
+**RESOLUTION**: give it a few seconds when changing the github username
+
+```
+
+```
+
 ## Solution
 
 ### Task #1: Enhance the component so that it also accepts an HTTP endpoint as a data source.
@@ -69,7 +80,7 @@ In order to refactor the component to accept a url the following actions were ta
 
 - pass additional options when initializing the component
 - update onQueryChange function to display the results based on data vs github
-- added the following methods:
+- added the following supporting methods:
 	- **getResultsAPI**
 	- **makeAPICall** 
     - **getResultsAPI** 
@@ -84,7 +95,7 @@ New options were passed during it's instantiation. These additional values chang
 For the **state** component the following keys were added:
 
 - className: 'state-group',
-- source: 'local',
+- source: 'local'
 
 ```js
 https: new Autocomplete(document.getElementById('state'), {
@@ -104,6 +115,8 @@ For the **gh-users** component the following keys were added:
 - source: 'API',
 
 ```js
+
+const githubAPI = "http://api.github.com/search/users?"
 new Autocomplete(document.getElementById('gh-user'), {
 	githubAPI,
 	className: 'gh-users-group',
@@ -116,13 +129,15 @@ new Autocomplete(document.getElementById('gh-user'), {
 
 #### Update onQueryChange function to display the results based on data vs github
 
-The **onQueryChange** method was updated to include logic that would called either **getResults** or a newly added function **getResultsAPI** based on the value of **this.options.source**
+The **onQueryChange** method was updated to include logic that would called either **getResults** or a newly added function **getResultsAPI** based on the value of **this.options.source**.
+
+
 
 ```js
 async onQueryChange(query) {
   let results =
     this.options.source === 'local'
-      ? await this.getResults(query, this.options.data)
+      ? this.getResults(query, this.options.data)
       : await this.getResultsAPI(query, this.options.githubAPI);
 
   // more code...
@@ -193,7 +208,7 @@ async getResultsAPI(query, url) {
 }
 ```
 
-Both functions were configured to use **async/await** and required that the **webpack.config.js** file be updated (included in solution section)
+All three functions were configured to use **async/await** and required that the **webpack.config.js** file be updated to support this functionality. (included in solution section)
 
 
 
@@ -229,7 +244,7 @@ addKeyPressEventListener() {
 			// keypress down arrow
 			if (event.key === 'ArrowDown') {
 				index += 1;
-				//down
+				// keypress down arrow
 				// if an element has already been selected
 				if (currentLi) {
 					currentLi.classList.remove('selected');

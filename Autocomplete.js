@@ -62,14 +62,14 @@ class Autocomplete {
 		// Get data for the dropdown
 		let results =
 			this.options.source === 'local'
-				? await this.getResults(query, this.options.data)
+				? this.getResults(query, this.options.data)
 				: await this.getResultsAPI(query, this.options.githubAPI);
 
 		results = results.slice(0, this.options.numOfResults);
 		this.updateDropdown(results);
 	}
 
-	async getResults(query, data) {
+	getResults(query, data) {
 		if (!query) return [];
 		// Filter for matching strings
 		let results = data.filter((item) => {
@@ -84,27 +84,32 @@ class Autocomplete {
 		this.listEl.appendChild(this.createResultsEl(results));
 	}
 
-	// additional methods added as per the refactor
-	async makeAPICall(query) {
-		let githubAPI = `${this.options.githubAPI}q=${query}&per_page=${this.numOfResults}`;
-		// console.log('api', githubAPI);
-		let res = await fetch(githubAPI);
-		let results = await res.json();
-		// add a new key called text to format to align with the elements in the states data array...
-		results = results.items.map((item) => ({
-			...item,
-			text: item.login,
-			value: item.login,
-		}));
+	getResultsAPI(query, url) {
+		if (!query) return [];
+
+		const results = this.makeAPICall(query);
+
 		return results;
 	}
 
-	async getResultsAPI(query, url) {
-		if (!query) return [];
+	// additional methods added as per the refactor
+	makeAPICall(query) {
+		let githubAPI = `${this.options.githubAPI}q=${query}&per_page=${this.numOfResults}`;
+		// console.log('api', githubAPI);
+		const results = async () => {
+			let res = await fetch(githubAPI);
+			let json = await res.json();
+			console.log('json', json)
+			// add a new key called text to format to align with the elements in the states data array...
+			json = json.items.map((item) => ({
+				...item,
+				text: item.login,
+				value: item.login,
+			}));
+			return json;
+		};
 
-		let results = await this.makeAPICall(query);
-
-		return results;
+		return results();
 	}
 
 	// being called in createResultsEl(results)
@@ -138,18 +143,19 @@ class Autocomplete {
 		document
 			.querySelector(`.${this.options.className}`)
 			.addEventListener('keydown', (event) => {
-				let lis = document.querySelectorAll(`.${this.options.className} .result`);
+				let lis = document.querySelectorAll(
+					`.${this.options.className} .result`
+				);
 				let len = lis.length - 1;
 				// keypress down arrow
 				if (event.key === 'ArrowDown') {
 					index += 1;
 					//down
-					// if an element has already been selected
+					// if an li has already been selected
 					if (currentLi) {
 						currentLi.classList.remove('selected');
 						nextLi = lis[index];
-						console.log('nextLi', nextLi);
-						if (nextLi !== undefined && index <= len) {
+						if (index <= len) {
 							currentLi = nextLi;
 						} else {
 							index = 0;
@@ -164,33 +170,32 @@ class Autocomplete {
 						currentLi = lis[0];
 						currentLi.classList.add('selected');
 					}
-				// keypress up arrow
+					// keypress up arrow
 				} else if (event.key === 'ArrowUp') {
 					if (currentLi) {
 						currentLi.classList.remove('selected');
 						index -= 1;
-						nextLi = lis[index]
-						console.log(index,nextLi)
-						if (nextLi !== undefined && index >= 0) {
+						nextLi = lis[index];
+						if (index >= 0) {
 							currentLi = nextLi;
 						} else {
 							index = len;
-							currentLi = lis[len]
+							currentLi = lis[len];
 						}
 						currentLi.classList.add('selected');
 					} else {
 						index = 0;
-						currentLi = lis[len]
+						currentLi = lis[len];
 						currentLi.classList.add('selected');
 					}
 				} else if (event.key === 'Enter') {
 					let item = lis[index];
-					let itemVal = item.innerHTML
+					let itemVal = item.innerHTML;
 					console.log('itemVal', itemVal);
 					let input = document.querySelector(
 						`.${this.options.className} input`
-					)
-					input.value = itemVal
+					);
+					input.value = itemVal;
 					this.createUserSelectionEl({ text: item.innerText });
 				}
 			});
