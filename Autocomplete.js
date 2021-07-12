@@ -185,7 +185,6 @@ class Autocomplete {
 					}
 				} else if (event.key === 'Enter') {
 					let item = lis[index];
-
 					let itemVal = item.innerHTML
 					console.log('itemVal', itemVal);
 					let input = document.querySelector(
