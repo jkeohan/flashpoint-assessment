@@ -6,7 +6,8 @@
   "main": "./index.js",
   "scripts": {
     "test": "mocha-webpack --opts mocha.opts",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "build": "webpack -p"
   },
   "license": "UNLICENSED",
   "devDependencies": {
