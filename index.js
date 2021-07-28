@@ -10,7 +10,7 @@ const data = states.map(state => ({
 }));
 
 // GITHUB Users
-const githubAPI = "http://api.github.com/search/users?"
+const githubAPI = "https://api.github.com/search/users?"
 // const githubAPI = "http://api.github.com/search/users?q={query}&per_page={numOfResults}"
 
 https: new Autocomplete(document.getElementById('state'), {
