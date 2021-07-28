@@ -72,6 +72,20 @@ entry: {
 
 ```
 
+**ISSUE**: after deploying to both github pages and netlify the app erred out as it was not able to find bundle.js<br>
+**ERROR**: The error was as follows: 
+<img src="https://i.imgur.com/C8EIm41.png"><br>
+**RESOLUTION**: added the following to package.json which created a dist folder along with a bundle.js file<br>
+```js
+    "build": "webpack -p"
+```
+
+**ISSUE**: after deploying to both github pages and netlify the app erred out when trying to make the api call to github<br>
+**ERROR**: The error was as follows: 
+<img src="https://i.imgur.com/BTL6rlK.png"><br>
+**RESOLUTION**: updated api url to include https
+
+
 ## Solution
 
 ### Task #1: Enhance the component so that it also accepts an HTTP endpoint as a data source.
